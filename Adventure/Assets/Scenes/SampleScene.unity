@@ -2266,9 +2266,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   spawnPoint: {fileID: 0}
-  manager: {fileID: 0}
+  manager: {fileID: 817637738}
   isRespawn: 1
-  anim: {fileID: 0}
+  anim: {fileID: 1319518966069785}
+--- !u!95 &1319518966069785 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2829254079557274405, guid: 5afabfce90b19274ea3d17eafbd41f2d, type: 3}
+  m_PrefabInstance: {fileID: 2742797653165197964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1319518966069786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2738714542286505539, guid: 5afabfce90b19274ea3d17eafbd41f2d, type: 3}

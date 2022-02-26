@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int stage;
     public Transform player;
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         Player playerR = GetComponent<Player>();
         if (other.gameObject.tag == "Player")
@@ -23,5 +23,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(stage);
 
-    }
+    }*/
 }

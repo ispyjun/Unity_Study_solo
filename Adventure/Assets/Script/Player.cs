@@ -113,12 +113,12 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.tag == "Water")
+        if (other.gameObject.tag == "Water")
         {
             anim.SetTrigger("DoDie");
             Invoke("ReScene", 2f);
             //player.GetComponent<Animator>().SetTrigger("DoRespawn");
-        }*/
+        }
         if (other.tag == "finish")
         {
             /*if (itemCount == manager.totalItemCount)
@@ -132,11 +132,10 @@ public class Player : MonoBehaviour
             //}
         }
     }
-    /*void ReScene()
+    void ReScene()
     {
         SceneManager.LoadScene(manager.stage);
         isRespawn = true;
-
-    }*/
+    }
 
 }
