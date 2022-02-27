@@ -8,13 +8,17 @@ public class Player : MonoBehaviour
     public float speed;
     public GameObject spawnPoint;
     public GameManager manager;
+    GameObject nearObject;
+    public bool[] hasWeapons;
 
     float hAxis;
     float vAxis;
 
     bool wDown;
     bool jDown;
+    bool iDown;
     bool isJump;
+    public bool haveKey;
     public bool isRespawn;
 
     Vector3 moveVec;
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
         //Move();
         Turn();
         Jump();
+        Interation();
     }
 
     void GetInput()
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
         //wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
+        iDown = Input.GetButtonDown("Interation");
     }
 
     void Turn()
@@ -119,7 +125,7 @@ public class Player : MonoBehaviour
             Invoke("ReScene", 2f);
             //player.GetComponent<Animator>().SetTrigger("DoRespawn");
         }
-        if (other.tag == "finish")
+        if (other.gameObject.tag == "Finish")
         {
             /*if (itemCount == manager.totalItemCount)
             {
@@ -136,6 +142,59 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene(manager.stage);
         isRespawn = true;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Item")
+            nearObject = other.gameObject;
+    }
+
+    void Interation()
+    {
+        /*if (nearObject.tag == "Weapon")
+        {
+            Item item = nearObject.GetComponent<Item>();
+            int weaponIndex = item.value;
+            hasWeapons[weaponIndex] = true;
+
+            Destroy(nearObject);
+        }
+        else if (nearObject.tag == "Shop")
+        {
+            Shop shop = nearObject.GetComponent<Shop>();
+            shop.Enter(this);
+            isShop = true;
+        }*/
+        if (iDown && nearObject != null)
+        {
+            if (nearObject.CompareTag("Item"))
+            {
+                
+                Item item = nearObject.GetComponent<Item>();
+                int weaponIndex = item.value;
+                hasWeapons[weaponIndex] = true;
+
+                Destroy(nearObject);
+                haveKey = true;
+            }
+        }
+    }
+
+    
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Item")
+            nearObject = null;
+        /*else if (other.tag == "Shop")
+        {
+            Shop shop = nearObject.GetComponent<Shop>();
+            shop.Exit();
+            isShop = false;
+            nearObject = null;
+        }*/
+
     }
 
 }
