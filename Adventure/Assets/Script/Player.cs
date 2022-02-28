@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     bool isJump;
     public bool haveKey;
     public bool isRespawn;
+    public bool isFinish;
+    public bool doorOpen;
 
     Vector3 moveVec;
     //Vector3 dodgeVec;
@@ -133,10 +135,12 @@ public class Player : MonoBehaviour
             }
             else
             {*/
-            manager.stage++;
-            SceneManager.LoadScene(manager.stage);
+            //manager.stage++;
+            //isFinish = true;
+            SceneManager.LoadScene(manager.stage+1);
             //}
         }
+        
     }
     void ReScene()
     {
@@ -147,6 +151,8 @@ public class Player : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Item")
+            nearObject = other.gameObject;
+        if (other.tag == "Door")
             nearObject = other.gameObject;
     }
 
@@ -177,6 +183,14 @@ public class Player : MonoBehaviour
 
                 Destroy(nearObject);
                 haveKey = true;
+            }
+            if (nearObject.CompareTag("Door") && haveKey == true)
+            {
+                //Destroy(nearObject);
+                //anim.SetTrigger("DoOpen");
+                //doorOpen = true;
+                haveKey = false;
+
             }
         }
     }

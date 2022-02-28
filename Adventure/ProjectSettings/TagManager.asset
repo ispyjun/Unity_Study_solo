@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Item
   - Floor2
+  - Door
   layers:
   - Default
   - TransparentFX

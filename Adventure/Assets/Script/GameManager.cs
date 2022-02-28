@@ -6,22 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int stage;
-    public Transform player;
+   //public Transform player;
 
-    /*void OnTriggerEnter(Collider other)
+    /*void Awake()
     {
-        Player playerR = GetComponent<Player>();
-        if (other.gameObject.tag == "Player")
+        Player player = GetComponent<Player>();
+        if (player.isFinish == true)
         {
-            player.GetComponent<Animator>().SetTrigger("DoDie");
-            Invoke("ReScene", 2f);
-            playerR.isRespawn = true;
-            //player.GetComponent<Animator>().SetTrigger("DoRespawn");
+            stage++;
+            player.isFinish = false;
         }
-    }
-    void ReScene()
-    {
-        SceneManager.LoadScene(stage);
-
     }*/
 }

@@ -82,9 +82,10 @@ public class CameraTurn : MonoBehaviour
                     centralAxis.rotation.y + mouseX, 0) * camSpeed);
 
             //마우스 우클릭일때는 플레이어의 중심축도 같이 회전시키기
-            if (Input.GetMouseButton(0) | Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             {
-                playerAxis.rotation = Quaternion.Euler(new Vector3(
+                //transform.RotateAround(playerAxis.position, new Vector3(0, playerAxis.rotation.y , 0), camSpeed);
+               playerAxis.rotation = Quaternion.Euler(new Vector3(
               0, playerAxis.rotation.y + mouseX, 0) * camSpeed);
             }
         }
@@ -97,6 +98,9 @@ public class CameraTurn : MonoBehaviour
         if (wheel <= -5)
             wheel = -5;
         cam.localPosition = new Vector3(0, 0, wheel);
+
+        if (wheel == -1)
+            cam.localPosition = Vector3.zero;
     }
     void Update()
     {
@@ -129,3 +133,25 @@ public class CameraTurn : MonoBehaviour
         centralAxis.position = new Vector3(player.transform.position.x, player.transform.position.y + 4f, player.transform.position.z);
     }
 }
+    /*public Transform moving_object;
+    public float speed = 20f;
+    public Transform camPivot;
+
+    private Joystick controller;
+    private void Awake()
+    {
+        controller = this.GetComponent<Joystick>();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 conDir = controller.Direction;
+        if (conDir == Vector2.zero) return;
+
+        float thetaEuler = Mathf.Acos(conDir.y / conDir.magnitude) * (180 / Mathf.PI) * Mathf.Sign(conDir.x);
+
+        Vector3 moveAngle = Vector3.up * (camPivot.transform.rotation.eulerAngles.y + thetaEuler);
+        moving_object.rotation = Quaternion.Euler(moveAngle);
+        moving_object.Translate(Vector3.forward * Time.fixedDeltaTime * speed);
+    }
+}*/
