@@ -70,7 +70,7 @@ public class DoorController : MonoBehaviour
                 //txtToDisplay.GetComponent<Text>().text = "Press 'E' to Close";
                 doorCollider.enabled = false;
             }
-            else if (doorState == DoorState.Closed || gotKey)
+            else if (doorState == DoorState.Closed || gotKey == true)
             {
                 //txtToDisplay.GetComponent<Text>().text = "Press 'E' to Open";
                 doorCollider.enabled = true;
@@ -86,9 +86,9 @@ public class DoorController : MonoBehaviour
         {
             doorOpened = !doorOpened;           //The toggle function of door to open/close
 
-            if (doorState == DoorState.Closed && !doorAnim.isPlaying)
+            /*if (doorState == DoorState.Closed && !doorAnim.isPlaying)
             {
-                if (!keyNeeded)
+                if (!keyNeeded && gotKey)
                 {
                     doorAnim.Play("Door_Open");
                     doorState = DoorState.Opened;
@@ -99,7 +99,7 @@ public class DoorController : MonoBehaviour
                         doorAnim.Play("Door_Jam");
                     doorState = DoorState.Jammed;
                 }
-            }
+            }*/
 
             if (doorState == DoorState.Closed && gotKey && !doorAnim.isPlaying)
             {

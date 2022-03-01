@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -29,7 +30,12 @@ public class Player : MonoBehaviour
     Rigidbody rigid;
     public Animator anim;
     MeshRenderer[] meshs;
+    public GameObject txtToDisplay;
 
+    private void Start()
+    {
+        txtToDisplay.SetActive(false);
+    }
     void Awake()
     {
 
@@ -151,9 +157,18 @@ public class Player : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Item")
+        {
+            txtToDisplay.SetActive(true);
+            //txtToDisplay.GetComponent<Text>().text = "Press 'E'";
             nearObject = other.gameObject;
+        }
         if (other.tag == "Door")
+        {
+            if(haveKey == true)
+                txtToDisplay.SetActive(true);
+            //txtToDisplay.GetComponent<Text>().text = "Press 'E'";
             nearObject = other.gameObject;
+        }
     }
 
     void Interation()
@@ -182,6 +197,7 @@ public class Player : MonoBehaviour
                 hasWeapons[weaponIndex] = true;
 
                 Destroy(nearObject);
+                txtToDisplay.SetActive(false);
                 haveKey = true;
             }
             if (nearObject.CompareTag("Door") && haveKey == true)
@@ -189,6 +205,7 @@ public class Player : MonoBehaviour
                 //Destroy(nearObject);
                 //anim.SetTrigger("DoOpen");
                 //doorOpen = true;
+                txtToDisplay.SetActive(false);
                 haveKey = false;
 
             }
@@ -200,15 +217,23 @@ public class Player : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Item")
-            nearObject = null;
-        /*else if (other.tag == "Shop")
         {
-            Shop shop = nearObject.GetComponent<Shop>();
-            shop.Exit();
-            isShop = false;
             nearObject = null;
-        }*/
+            txtToDisplay.SetActive(false);
+        }
+        if (other.tag == "Door")
+        {
+            nearObject = null;
+            txtToDisplay.SetActive(false);
+        }
+            /*else if (other.tag == "Shop")
+            {
+                Shop shop = nearObject.GetComponent<Shop>();
+                shop.Exit();
+                isShop = false;
+                nearObject = null;
+            }*/
 
-    }
+        }
 
 }
