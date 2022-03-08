@@ -234,6 +234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5073936903471441080, guid: a6534b5f61ccb1b47bf37ec7c97b1db4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5073936903471441081, guid: a6534b5f61ccb1b47bf37ec7c97b1db4, type: 3}
       propertyPath: m_Name
       value: Finish
@@ -1218,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b36562fd308ee34ebf7405c29f74c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 0
+  stage: 1
 --- !u!1001 &842998741
 PrefabInstance:
   m_ObjectHideFlags: 0

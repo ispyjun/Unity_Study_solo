@@ -143,7 +143,8 @@ public class Player : MonoBehaviour
             {*/
             //manager.stage++;
             //isFinish = true;
-            SceneManager.LoadScene(manager.stage+1);
+            manager.stage++;
+            SceneManager.LoadScene(manager.stage);
             //}
         }
         
