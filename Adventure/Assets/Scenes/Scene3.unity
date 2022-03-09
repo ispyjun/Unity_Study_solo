@@ -995,6 +995,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5073936903471441080, guid: a6534b5f61ccb1b47bf37ec7c97b1db4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5073936903471441081, guid: a6534b5f61ccb1b47bf37ec7c97b1db4, type: 3}
       propertyPath: m_Name
       value: Cylinder
